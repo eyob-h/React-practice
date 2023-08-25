@@ -28,7 +28,7 @@ function Navbar() {
     try{
       await newRequest.post("/auth/logout");
       localStorage.setItem("currentUser", null);
-      navigate("/")
+      navigate("/login")
     }catch(err){
       console.log(err)
     }
@@ -45,19 +45,19 @@ function Navbar() {
       <div className="container">
         <div className="logo">
           <Link className="link" to="/">
-            <span className="text">liverr</span>
+            <span className="text">Habesha Insights</span>
           </Link>
-          <span className="dot">.</span>
+          {/* <span className="dot">.</span> */}
         </div>
         <div className="links">
-          <span>Liverr Business</span>
+          {/* <span>Liverr Business</span>
           <span>Explore</span>
-          <span>English</span>
-          {!currentUser?.isSeller && <span>Become a Seller</span>}
+          <span>English</span> */}
+          {/* {!currentUser?.isSeller && <span>Become a Seller</span>} */}
           {currentUser ? (
             <div className="user" onClick={()=>setOpen(!open)}>
               <img
-                src={currentUser.img||"/public/img/man.png"}
+                src={currentUser.profilePicture||"/public/img/man.png"}
                 alt=""
               />
               <span>{currentUser?.username}</span>
@@ -72,12 +72,12 @@ function Navbar() {
                     </Link>
                   </>
                 )}
-                <Link className="link" to="/orders">
+                {/* <Link className="link" to="/orders">
                   Orders
                 </Link>
                 <Link className="link" to="/messages">
                   Messages
-                </Link>
+                </Link> */}
                 <Link className="link" onClick={handleLogout}>
                   Logout
                 </Link>
@@ -85,7 +85,9 @@ function Navbar() {
             </div>
           ) : (
             <>
-              <span>Sign in</span>
+              <Link className="link" to="/login">
+                <button>Sign in</button>
+              </Link>
               <Link className="link" to="/register">
                 <button>Join</button>
               </Link>
@@ -98,31 +100,31 @@ function Navbar() {
           <hr />
           <div className="menu">
             <Link className="link menuLink" to="/">
-              Graphics & Design
+              Schools
             </Link>
             <Link className="link menuLink" to="/">
-              Video & Animation
+              Hospitals
             </Link>
             <Link className="link menuLink" to="/">
-              Writing & Translation
+              Hotels
             </Link>
             <Link className="link menuLink" to="/">
-              AI Services
+              Cafes
             </Link>
             <Link className="link menuLink" to="/">
-              Digital Marketing
+              Resorts
             </Link>
             <Link className="link menuLink" to="/">
-              Music & Audio
+              Bakery
             </Link>
             <Link className="link menuLink" to="/">
-              Programming & Tech
+              Clinics
             </Link>
             <Link className="link menuLink" to="/">
-              Business
+              Meeting Halls
             </Link>
             <Link className="link menuLink" to="/">
-              Lifestyle
+              Higher Education
             </Link>
           </div>
           <hr />

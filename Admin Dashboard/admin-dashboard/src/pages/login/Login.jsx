@@ -14,7 +14,7 @@ function Login() {
     try {
       const res = await newRequest.post("/auth/login", { username, password });
       localStorage.setItem("currentUser", JSON.stringify(res.data));
-      navigate("/mygigs")
+      navigate("/gigs")
     } catch (err) {
       setError(err.response.data);
     }
@@ -23,7 +23,7 @@ function Login() {
   return (
     <div className="login">
       <form onSubmit={handleSubmit}>
-        <h1>Sign in</h1>
+        <h1>Business Owner Login</h1>
         <label htmlFor="">Username</label>
         <input
           name="username"
@@ -38,6 +38,8 @@ function Login() {
           type="password"
           onChange={(e) => setPassword(e.target.value)}
         />
+          <a href="http://127.0.0.1:5173/register">Register</a>
+
         <button type="submit">Login</button>
         {error && error}
       </form>
